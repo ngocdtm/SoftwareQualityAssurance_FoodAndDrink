@@ -48,8 +48,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
 
         public static IEnumerable<User> GetUsers()
         {
-            //string filePath = "C:\\Users\\Laptop\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink\\userData.json"; // Đường dẫn tệp JSON
-            string filePath = "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\userData.json"; // Đường dẫn tệp JSON
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData", "registerInfor.json"); // Đường dẫn tệp JSON
             string json = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<List<User>>(json);
         }

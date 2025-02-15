@@ -60,7 +60,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
         }
         public static IEnumerable<User_Register> GetUserRegister()
         {
-            string filePath = "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\registerInfor.json"; // Đường dẫn tệp JSON
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData", "registerInfor.json"); // Đường dẫn tệp JSON
             string json = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<List<User_Register>>(json);
         }
