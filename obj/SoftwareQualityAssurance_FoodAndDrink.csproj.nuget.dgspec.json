@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj": {}
+    "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj": {
+    "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj",
+        "projectUniqueName": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj",
         "projectName": "SoftwareQualityAssurance_FoodAndDrink",
-        "projectPath": "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj",
-        "packagesPath": "C:\\Users\\Phung\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\obj\\",
+        "projectPath": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj",
+        "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Phung\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,8 +25,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,7 +41,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -112,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
