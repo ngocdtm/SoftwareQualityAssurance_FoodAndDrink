@@ -11,7 +11,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
-using static SoftwareQualityAssurance_FoodAndDrink.LoginTest;
+using NUnit.Framework;
 
 namespace SoftwareQualityAssurance_FoodAndDrink
 {
@@ -31,7 +31,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
             Console.WriteLine("Starting WebDriver setup...");
             driver = new ChromeDriver();
             Console.WriteLine("WebDriver initialized.");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
         }
         [Test]
         [TestCaseSource(nameof(GetUserRegister))]
@@ -45,26 +45,32 @@ namespace SoftwareQualityAssurance_FoodAndDrink
             actions.MoveToElement(dropdown).Perform();
             driver.FindElement(By.CssSelector("a[href='/account/Register']")).Click();
             //wait for 
-            WebDriverWait wait=new WebDriverWait(driver,TimeSpan.FromSeconds(10));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
             //fill textfield
             driver.FindElement(By.Id("Email")).SendKeys(user_Register.email);
+            Thread.Sleep(2000);
+
             driver.FindElement(By.Id("Password")).SendKeys(user_Register.password);
+            Thread.Sleep(2000);
+
             driver.FindElement(By.Id("ConfirmPassword")).SendKeys(user_Register.confirmPassword);
+            Thread.Sleep(2000);
+
             driver.FindElement(By.XPath("//input[@type='submit' and @value='Đăng ký']")).Submit();
             Thread.Sleep(2000);
             //check if register successfully -> write to userData.json -- update later
             bool isValid = false;
-           
 
         }
         public static IEnumerable<User_Register> GetUserRegister()
         {
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData", "registerInfor.json"); // Đường dẫn tệp JSON
+            //b4 TestData folder not exist in /bin/Debug/net8.0
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "TestData", "registerInfor.json"); // Đường dẫn tệp JSON
             string json = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<List<User_Register>>(json);
-        }
 
+        }
         [TearDown]  // Runs after each test
         public void TearDown()
         {
