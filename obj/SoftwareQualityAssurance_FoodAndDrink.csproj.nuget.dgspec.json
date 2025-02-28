@@ -55,6 +55,10 @@
               "target": "Package",
               "version": "[3.11.0, )"
             },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[7.6.0, )"
+            },
             "MSTest.TestFramework": {
               "target": "Package",
               "version": "[3.8.0, )"
