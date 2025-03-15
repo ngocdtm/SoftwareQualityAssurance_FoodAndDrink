@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
 using SeleniumExtras.WaitHelpers;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace SoftwareQualityAssurance_FoodAndDrink
 {
@@ -32,60 +34,18 @@ namespace SoftwareQualityAssurance_FoodAndDrink
             public string ExpectedErrorField { get; set; }
         }
 
-        // Danh sách các test case với dữ liệu tương ứng
+        // Đọc dữ liệu test từ file JSON
         private List<ProductTestData> GetTestCases()
         {
-            return new List<ProductTestData>
-    {
-        new ProductTestData
-        {
-            TestName = "EmptyFields",
-            ProductName = "",
-            Description = "",
-            Detail = "",
-            Quantity = "",
-            Price = "",
-            OriginalPrice = "",
-            ExpectedErrorMessage = "Vui lòng nhập tên sản phẩm",
-            ExpectedErrorField = "Title"
-        },
-        new ProductTestData
-        {
-            TestName = "NegativePrice",
-            ProductName = "Test Negative Price",
-            Description = "Test description",
-            Detail = "Test detail",
-            Quantity = "10",
-            Price = "-1000",
-            OriginalPrice = "10000",
-            ExpectedErrorMessage = "Giá bán phải lớn hơn hoặc bằng 0",
-            ExpectedErrorField = "demoPrice"
-        },
-        new ProductTestData
-        {
-            TestName = "NegativeOriginalPrice",
-            ProductName = "Test Negative Original Price",
-            Description = "Test description",
-            Detail = "Test detail",
-            Quantity = "10",
-            Price = "10000",
-            OriginalPrice = "-5000",
-            ExpectedErrorMessage = "Giá gốc phải lớn hơn hoặc bằng 0",
-            ExpectedErrorField = "demoOriginalPrice"
-        },
-        new ProductTestData
-        {
-            TestName = "ZeroQuantity",
-            ProductName = "Test Zero Quantity",
-            Description = "Test description",
-            Detail = "Test detail",
-            Quantity = "0",
-            Price = "10000",
-            OriginalPrice = "15000",
-            ExpectedErrorMessage = "Vui lòng nhập số lượng",  // Updated based on error logs
-            ExpectedErrorField = "Quantity"
-        }
-    };
+            string jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData", "AddProductTest.json");
+
+            if (!File.Exists(jsonFilePath))
+            {
+                throw new FileNotFoundException($"File dữ liệu test không tồn tại: {jsonFilePath}");
+            }
+
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            return JsonConvert.DeserializeObject<List<ProductTestData>>(jsonContent);
         }
 
         [SetUp]
@@ -121,10 +81,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
         }
 
         [Test]
-        [TestCase("EmptyFields")]
-        [TestCase("NegativePrice")]
-        [TestCase("NegativeOriginalPrice")]
-        [TestCase("ZeroQuantity")]
+        [TestCaseSource(nameof(GetTestCaseNames))]
         public void TestAddProductWithInvalidData(string testName)
         {
             // Lấy dữ liệu test từ tên test case
@@ -140,7 +97,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
             VerifyError(testData.ExpectedErrorMessage, testData.ExpectedErrorField);
         }
 
-        // lấy danh sách tên các test case
+        // Lấy danh sách tên các test case từ file JSON
         public static IEnumerable<string> GetTestCaseNames()
         {
             var testInstance = new ManageProduct();
@@ -285,22 +242,22 @@ namespace SoftwareQualityAssurance_FoodAndDrink
 
                 // Add more possible selectors for field errors
                 List<string> selectors = new List<string>
-        {
-            $"span[data-valmsg-for='{errorFieldId}']",
-            $".field-validation-error[data-valmsg-for='{errorFieldId}']",
-            $"#{errorFieldId}-error",
-            $"label[for='{errorFieldId}'] + .text-danger",
-            $"#{errorFieldId} ~ .text-danger",
-            $".error-message[data-field='{errorFieldId}']",
-            $"#error-{errorFieldId}",
-            $"[aria-describedby='{errorFieldId}-error']",
-            // Some apps append validation messages after the input field
-            $"#{errorFieldId} + span.text-danger",
-            $"#{errorFieldId} + div.text-danger",
-            // Some apps place validation messages in specific containers
-            $".form-group:has(#{errorFieldId}) .text-danger",
-            $".form-group:has(#{errorFieldId}) .error-message"
-        };
+                {
+                    $"span[data-valmsg-for='{errorFieldId}']",
+                    $".field-validation-error[data-valmsg-for='{errorFieldId}']",
+                    $"#{errorFieldId}-error",
+                    $"label[for='{errorFieldId}'] + .text-danger",
+                    $"#{errorFieldId} ~ .text-danger",
+                    $".error-message[data-field='{errorFieldId}']",
+                    $"#error-{errorFieldId}",
+                    $"[aria-describedby='{errorFieldId}-error']",
+                    // Some apps append validation messages after the input field
+                    $"#{errorFieldId} + span.text-danger",
+                    $"#{errorFieldId} + div.text-danger",
+                    // Some apps place validation messages in specific containers
+                    $".form-group:has(#{errorFieldId}) .text-danger",
+                    $".form-group:has(#{errorFieldId}) .error-message"
+                };
 
                 // Try each selector
                 foreach (string selector in selectors)

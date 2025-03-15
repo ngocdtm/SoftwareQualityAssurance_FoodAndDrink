@@ -1,0 +1,46 @@
+[
+  {
+    "TestName": "EmptyFields",
+    "ProductName": "",
+    "Description": "",
+    "Detail": "",
+    "Quantity": "",
+    "Price": "",
+    "OriginalPrice": "",
+    "ExpectedErrorMessage": "Vui lòng nhập tên sản phẩm",
+    "ExpectedErrorField": "Title"
+  },
+  {
+    "TestName": "NegativePrice",
+    "ProductName": "Test Negative Price",
+    "Description": "Test description",
+    "Detail": "Test detail",
+    "Quantity": "10",
+    "Price": "-1000",
+    "OriginalPrice": "10000",
+    "ExpectedErrorMessage": "Giá bán phải lớn hơn hoặc bằng 0",
+    "ExpectedErrorField": "demoPrice"
+  },
+  {
+    "TestName": "NegativeOriginalPrice",
+    "ProductName": "Test Negative Original Price",
+    "Description": "Test description",
+    "Detail": "Test detail",
+    "Quantity": "10",
+    "Price": "10000",
+    "OriginalPrice": "-5000",
+    "ExpectedErrorMessage": "Giá gốc phải lớn hơn hoặc bằng 0",
+    "ExpectedErrorField": "demoOriginalPrice"
+  },
+  {
+    "TestName": "ZeroQuantity",
+    "ProductName": "Test Zero Quantity",
+    "Description": "Test description",
+    "Detail": "Test detail",
+    "Quantity": "0",
+    "Price": "10000",
+    "OriginalPrice": "15000",
+    "ExpectedErrorMessage": "Vui lòng nhập số lượng",
+    "ExpectedErrorField": "Quantity"
+  }
+]
