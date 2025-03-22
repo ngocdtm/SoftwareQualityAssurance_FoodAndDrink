@@ -1,85 +1,150 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.BiDi.Modules.Script;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using System.IO;
 
 namespace SoftwareQualityAssurance_FoodAndDrink
 {
-    [TestClass]
     public class RegisterTest
     {
         private IWebDriver driver;
-        public class User_Register
-        {
-            public string email { get; set; }
-            public string password { get; set; }
-            public string confirmPassword { get; set; }
-        }
+        private WebDriverWait wait;
+
+        private const string BASE_URL = "https://localhost:44379/";
+        private const string HOME_PAGE_URL = "https://localhost:44379/trang-chu";
+        private const string EXCEL_FILE_PATH = "TestData/DataEntry.xlsx"; // Đường dẫn tương đối từ thư mục gốc
+        private const string SHEET_NAME = "Register Data";
+        private const int ERROR_COLUMN = 9;
+        private const int FIRST_DATA_ROW = 2;
+
         [SetUp]
         public void SetUp()
         {
-            Console.WriteLine("Starting WebDriver setup...");
             driver = new ChromeDriver();
-            Console.WriteLine("WebDriver initialized.");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
+            driver.Manage().Window.Maximize();
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(40));
         }
-        [Test]
-        [TestCaseSource(nameof(GetUserRegister))]
-        public void TestRegister(User_Register user_Register)
+
+        public class UserRegister
         {
-            driver.Navigate().GoToUrl("https://localhost:44379/");
+            public string Email { get; set; }
+            public string Password { get; set; }
+            public string ConfirmPassword { get; set; }
+            public int RowIndex { get; set; }
+        }
 
-            // Navigate to dropdown and click register
-            IWebElement dropdown = driver.FindElement(By.ClassName("dropdown"));
-            Actions actions = new Actions(driver);
-            actions.MoveToElement(dropdown).Perform();
-            driver.FindElement(By.CssSelector("a[href='/account/Register']")).Click();
-            //wait for 
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        public static IEnumerable<object[]> GetUsersFromExcel()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", EXCEL_FILE_PATH);
 
-            //fill textfield
-            driver.FindElement(By.Id("Email")).SendKeys(user_Register.email);
-            Thread.Sleep(2000);
+            using var package = new ExcelPackage(new FileInfo(fullPath));
+            var worksheet = package.Workbook.Worksheets[SHEET_NAME];
+            var users = new List<object[]>();
 
-            driver.FindElement(By.Id("Password")).SendKeys(user_Register.password);
-            Thread.Sleep(2000);
+            for (int row = FIRST_DATA_ROW; row <= 13; row++)
+            {
+                string data = worksheet.Cells[row, 8].Text;
+                string[] lines = data.Split('\n', StringSplitOptions.RemoveEmptyEntries);
 
-            driver.FindElement(By.Id("ConfirmPassword")).SendKeys(user_Register.confirmPassword);
-            Thread.Sleep(2000);
+                if (lines.Length < 3)
+                    throw new FormatException($"Row {row} has invalid format. Expected 3 lines, found {lines.Length}.");
 
+                users.Add(new object[]
+                {
+                    new UserRegister
+                    {
+                        Email = ExtractValue(lines[0]),
+                        Password = ExtractValue(lines[1]),
+                        ConfirmPassword = ExtractValue(lines[2]),
+                        RowIndex=row
+                    }
+                });
+            }
+            return users;
+        }
+
+        private static string ExtractValue(string line) => line.Split('"')[1];
+
+        [TestCaseSource(nameof(GetUsersFromExcel))]
+        public void VerifyRegisterFlow(UserRegister user)
+        {
+            NavigateToRegisterPage();
+            FillRegistrationForm(user);
+            SubmitRegistrationForm();
+
+            string resultMessage = IsRegistrationSuccessful()
+                ? "Success"
+                : GetErrorMessage();
+
+            TestContext.WriteLine(resultMessage);
+            WriteResultToExcel(user, resultMessage);
+        }
+
+        private void NavigateToRegisterPage()
+        {
+            driver.Navigate().GoToUrl(BASE_URL);
+            var dropdown = driver.FindElement(By.ClassName("dropdown"));
+            new Actions(driver).MoveToElement(dropdown).Perform();
+            var registerButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("a[href='/account/Register']")));
+            registerButton.Click();
+        }
+
+        private void FillRegistrationForm(UserRegister user)
+        {
+            driver.FindElement(By.Id("Email")).SendKeys(user.Email);
+            driver.FindElement(By.Id("Password")).SendKeys(user.Password);
+            driver.FindElement(By.Id("ConfirmPassword")).SendKeys(user.ConfirmPassword);
+        }
+
+        private void SubmitRegistrationForm()
+        {
+            string initialUrl = driver.Url;
             driver.FindElement(By.XPath("//input[@type='submit' and @value='Đăng ký']")).Submit();
-            Thread.Sleep(2000);
-            //check if register successfully -> write to userData.json -- update later
-            bool isValid = false;
-
         }
-        public static IEnumerable<User_Register> GetUserRegister()
+
+        private bool IsRegistrationSuccessful() => driver.Url == HOME_PAGE_URL;
+
+        private string GetErrorMessage()
         {
-            //b4 TestData folder not exist in /bin/Debug/net8.0
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "TestData", "registerInfor.json"); // Đường dẫn tệp JSON
-            string json = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<List<User_Register>>(json);
-
+            Thread.Sleep(1000);
+            var errorElement = driver.FindElement(By.XPath("//div[contains(@class,'text-danger')]//li"));
+            return ((IJavaScriptExecutor)driver).ExecuteScript("return arguments[0].textContent;", errorElement).ToString();
         }
-        [TearDown]  // Runs after each test
+
+        private void WriteResultToExcel(UserRegister user, string result)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", EXCEL_FILE_PATH);
+
+            using var package = new ExcelPackage(new FileInfo(fullPath));
+            var worksheet = package.Workbook.Worksheets[SHEET_NAME];
+            worksheet.Cells[user.RowIndex, ERROR_COLUMN].Value = result;
+            package.Save();
+        }
+
+        private int FindRowForUser(ExcelWorksheet worksheet, string email)
+        {
+            for (int row = FIRST_DATA_ROW; row <= 13; row++)
+            {
+                string data = worksheet.Cells[row, 8].Text;
+                if (data.Contains(email))
+                    return row;
+            }
+            throw new Exception($"User with email {email} not found in Excel.");
+        }
+
+        [TearDown]
         public void TearDown()
         {
-            if (driver != null)
-            {
-                driver.Quit();
-                driver.Dispose();
-            }
+            driver?.Quit();
+            driver?.Dispose();
         }
-
     }
 }
