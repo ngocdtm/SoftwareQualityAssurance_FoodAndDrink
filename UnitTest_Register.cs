@@ -85,6 +85,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
         [TestCase("12AS!@", "12AS!@", true)]
         // TC 1.5.4: Password không chứa kí tự đặc biệt
         [TestCase("12asAS", "12asAS", true)]
+
         public async Task PasswordValidateTest(string userName, string password, bool expected)
         {
             var passwordValidator = new PasswordValidator<ApplicationUser>();

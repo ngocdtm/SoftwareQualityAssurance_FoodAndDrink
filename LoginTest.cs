@@ -269,6 +269,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
             IWebElement btn_Login = wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='loginForm']/form/div[4]/div/input"))));
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", btn_Login);
             btn_Login.Click();
+
         }
 
         [TearDown]

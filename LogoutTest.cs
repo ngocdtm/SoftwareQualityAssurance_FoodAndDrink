@@ -34,6 +34,7 @@ public class LogoutTest
         ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", btn_Login);
         btn_Login.Click();
 
+
     }
     #region TC3.1: Đăng xuất thành công
     [Test]

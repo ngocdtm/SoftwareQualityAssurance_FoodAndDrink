@@ -127,6 +127,11 @@ namespace SoftwareQualityAssurance_FoodAndDrink
             var worksheet = package.Workbook.Worksheets[SHEET_NAME];
             worksheet.Cells[user.RowIndex, ERROR_COLUMN].Value = result;
             package.Save();
+                
+
+
+
+
         }
 
         private int FindRowForUser(ExcelWorksheet worksheet, string email)
@@ -137,6 +142,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
                 if (data.Contains(email))
                     return row;
             }
+
             throw new Exception($"User with email {email} not found in Excel.");
         }
 

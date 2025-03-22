@@ -197,6 +197,7 @@ public class IntergationStatusOrder
         IWebElement btn_Submit = wait.Until(ExpectedConditions.ElementToBeClickable(driver.FindElement(By.XPath("//*[@id='loginForm']/form/div[4]/div/input"))));
         ScrollToView(btn_Submit);
         btn_Submit.Click();
+
     }
 
     private void LoginForAdmin(string adminName, string adminPass)
