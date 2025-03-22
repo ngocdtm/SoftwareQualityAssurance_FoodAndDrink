@@ -6,7 +6,7 @@ using SeleniumExtras.WaitHelpers;
 
 namespace SoftwareQualityAssurance_FoodAndDrink
 {
-    internal class IntergrationPaymentAndCheckInAdmin
+    public class AddProductToCart
     {
         private IWebDriver driver;
         private WebDriverWait wait;
@@ -23,9 +23,11 @@ namespace SoftwareQualityAssurance_FoodAndDrink
         public void IntergrationManageCartAndManageOrder()
         {
             driver.Navigate().GoToUrl("https://localhost:44379/");
+
+
             Login("22dh112391@gmail.com", "123asd!@#ASD");
             SelectStore("Thành phố Hồ Chí Minh", "Quận 10", "Phường 12", "h Tan Thoi");
-            AddProductToCart("Cà phê Latte", "size_13", "topping_28");
+            AddProduct("Cà phê Latte", "size_13", "topping_28");
             Checkout("Đặng Thị Mỹ Ngọc", "0378432963", "h Tan Thoi");
         }
 
@@ -67,7 +69,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
 
         }
 
-        private void AddProductToCart(string productName, string sizeId, string toppingId)
+        private void AddProduct(string productName, string sizeId, string toppingId)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             Thread.Sleep(2000);
@@ -80,50 +82,17 @@ namespace SoftwareQualityAssurance_FoodAndDrink
             Thread.Sleep(2000);
             Assert.That(driver.SwitchTo().Alert().Text, Is.EqualTo("Thêm sản phẩm vào giỏ hàng thành công!"));
             driver.SwitchTo().Alert().Accept();
-            Thread.Sleep(2000);
         }
 
         private void Checkout(string customerName, string phone, string address)
         {
             driver.FindElement(By.Id("checkout_items")).Click();
-            driver.FindElement(By.LinkText("Thanh toán")).Click();
-
-            driver.FindElement(By.Name("CustomerName")).SendKeys(customerName);
-            driver.FindElement(By.Name("Phone")).SendKeys(phone);
-            driver.FindElement(By.Name("Address")).SendKeys(address);
-            driver.FindElement(By.Id("btnCheckOut")).Click();
-            Thread.Sleep(2000);
-
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-
-         
-            IWebElement dropdownButton = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(".dropbtn")));
-            dropdownButton.Click();
-
-           
-            Thread.Sleep(2000);
-
-           
-            IWebElement orderHistory = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[contains(text(),'Lịch sử đơn hàng')]")));
-            orderHistory.Click();
-            Thread.Sleep(2000);
-            Thread.Sleep(2000);
-            //Trỏ tới Admin to check ID Order
-            driver.Navigate().GoToUrl("https://localhost:44379/admin/order/index");
-
-            IWebElement row = wait.Until(ExpectedConditions.ElementExists(By.XPath("//tr[td[text()='1']]")));
-
-            IWebElement detailButton = row.FindElement(By.XPath(".//a[contains(text(),'Xem chi tiết')]"));
-            detailButton.Click();
-            Thread.Sleep(2000);
-            Thread.Sleep(2000);
         }
 
         private void SelectDropdown(By locator, string value)
         {
 
-            //var dropdown = driver.FindElement(locator);
-            //dropdown.FindElement(By.XPath($"//option[. = '{value}']")).Click();
+          
 
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             var dropdown = wait.Until(ExpectedConditions.ElementToBeClickable(locator));
