@@ -23,8 +23,6 @@ namespace SoftwareQualityAssurance_FoodAndDrink
         public void IntergrationManageCartAndManageOrder()
         {
             driver.Navigate().GoToUrl("https://localhost:44379/");
-       
-
             Login("22dh112391@gmail.com", "123asd!@#ASD");
             SelectStore("Thành phố Hồ Chí Minh", "Quận 10", "Phường 12", "h Tan Thoi");
             AddProductToCart("Cà phê Latte", "size_13", "topping_28");
@@ -82,6 +80,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
             Thread.Sleep(2000);
             Assert.That(driver.SwitchTo().Alert().Text, Is.EqualTo("Thêm sản phẩm vào giỏ hàng thành công!"));
             driver.SwitchTo().Alert().Accept();
+            Thread.Sleep(2000);
         }
 
         private void Checkout(string customerName, string phone, string address)
@@ -102,7 +101,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
             dropdownButton.Click();
 
            
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
            
             IWebElement orderHistory = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//a[contains(text(),'Lịch sử đơn hàng')]")));
