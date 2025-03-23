@@ -3,8 +3,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.Interactions;
-using System.Web.WebPages;
-using System.Drawing;
 namespace SoftwareQualityAssurance_FoodAndDrink;
 
 public class IntergationStatusOrder

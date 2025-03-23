@@ -1,19 +1,130 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|d:\\github_cloneproject\\softwarequalityassurance_foodanddrink\\manageproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|solutionrelative:manageproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|d:\\github_cloneproject\\softwarequalityassurance_foodanddrink\\unittest_register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|solutionrelative:unittest_register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|d:\\github_cloneproject\\softwarequalityassurance_foodanddrink\\testdata\\reset_link.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|solutionrelative:testdata\\reset_link.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|d:\\github_cloneproject\\softwarequalityassurance_foodanddrink\\testdata\\addproducttest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|solutionrelative:testdata\\addproducttest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|d:\\github_cloneproject\\softwarequalityassurance_foodanddrink\\intergationstatusorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|solutionrelative:intergationstatusorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|d:\\github_cloneproject\\softwarequalityassurance_foodanddrink\\logintest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06697BDA-F183-4E76-B097-E8819EF946EF}|SoftwareQualityAssurance_FoodAndDrink.csproj|solutionrelative:logintest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 204,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 247,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "reset_link.txt",
+              "DocumentMoniker": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\TestData\\reset_link.txt",
+              "RelativeDocumentMoniker": "TestData\\reset_link.txt",
+              "ToolTip": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\TestData\\reset_link.txt",
+              "RelativeToolTip": "TestData\\reset_link.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-03-23T06:01:40.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddProductTest.json",
+              "DocumentMoniker": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\TestData\\AddProductTest.json",
+              "RelativeDocumentMoniker": "TestData\\AddProductTest.json",
+              "ToolTip": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\TestData\\AddProductTest.json",
+              "RelativeToolTip": "TestData\\AddProductTest.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-23T06:01:10.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UnitTest_Register.cs",
+              "DocumentMoniker": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\UnitTest_Register.cs",
+              "RelativeDocumentMoniker": "UnitTest_Register.cs",
+              "ToolTip": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\UnitTest_Register.cs",
+              "RelativeToolTip": "UnitTest_Register.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T05:35:58.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginTest.cs",
+              "DocumentMoniker": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\LoginTest.cs",
+              "RelativeDocumentMoniker": "LoginTest.cs",
+              "ToolTip": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\LoginTest.cs",
+              "RelativeToolTip": "LoginTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T05:35:48.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IntergationStatusOrder.cs",
+              "DocumentMoniker": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\IntergationStatusOrder.cs",
+              "RelativeDocumentMoniker": "IntergationStatusOrder.cs",
+              "ToolTip": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\IntergationStatusOrder.cs",
+              "RelativeToolTip": "IntergationStatusOrder.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAASwBsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T05:35:42.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ManageProduct.cs",
+              "DocumentMoniker": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\ManageProduct.cs",
+              "RelativeDocumentMoniker": "ManageProduct.cs",
+              "ToolTip": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\ManageProduct.cs",
+              "RelativeToolTip": "ManageProduct.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAtwE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T05:35:17.343Z",
+              "EditorCaption": ""
             }
           ]
         }
