@@ -19,7 +19,7 @@ namespace SoftwareQualityAssurance_FoodAndDrink
         }
 
         [Test]
-        public void IntergrationManageCartAndManageOrder()
+        public void UpdateQuantityTest()
         {
             driver.Navigate().GoToUrl("https://localhost:44379/");
             Login("22dh112391@gmail.com", "123asd!@#ASD");
@@ -106,9 +106,14 @@ namespace SoftwareQualityAssurance_FoodAndDrink
         {
             Thread.Sleep(2000);
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+           
+            IWebElement quantityField = driver.FindElement(By.Id("Quantity_2"));
+            quantityField.Clear(); // Xóa dữ liệu cũ
+            quantityField.SendKeys("2"); // Nhập số mới
+           
+            IWebElement updateButton = driver.FindElement(By.CssSelector(".btnUpdate"));
+            updateButton.Click();
             Thread.Sleep(2000);
-            driver.FindElement(By.Id("Quantity_2")).SendKeys("2");
-            driver.FindElement(By.LinkText("Cập nhật")).Click();
         }
 
 

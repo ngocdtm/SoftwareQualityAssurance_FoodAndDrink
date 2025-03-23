@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj": {}
+    "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj": {}
   },
   "projects": {
-    "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj": {
+    "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj",
+        "projectUniqueName": "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj",
         "projectName": "SoftwareQualityAssurance_FoodAndDrink",
-        "projectPath": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj",
-        "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub_CloneProject\\SoftwareQualityAssurance_FoodAndDrink\\obj\\",
+        "projectPath": "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\SoftwareQualityAssurance_FoodAndDrink.csproj",
+        "packagesPath": "C:\\Users\\Phung\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Phung\\source\\repos\\SoftwareQualityAssurance_FoodAndDrink\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Phung\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,6 +25,8 @@
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,7 +43,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -53,25 +55,71 @@
               "target": "Package",
               "version": "[3.11.0, )"
             },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[7.6.0, )"
+            },
             "MSTest.TestFramework": {
               "target": "Package",
               "version": "[3.8.0, )"
             },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.AspNet.Identity.Owin": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "Microsoft.AspNetCore.Cryptography.KeyDerivation": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.AspNetCore.Routing.Abstractions": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.8.0, )"
+              "version": "[17.13.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.72, )"
             },
             "NUnit": {
               "target": "Package",
               "version": "[4.3.2, )"
             },
             "NUnit.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.9.0, )"
+              "version": "[4.6.0, )"
             },
             "NUnit3TestAdapter": {
               "target": "Package",
-              "version": "[4.6.0, )"
+              "version": "[5.0.0, )"
             },
             "Selenium.Community.PageObjects": {
               "target": "Package",
@@ -79,19 +127,29 @@
             },
             "Selenium.Support": {
               "target": "Package",
-              "version": "[4.27.0, )"
-            },
-            "Selenium.WebDriver": {
-              "target": "Package",
               "version": "[4.28.0, )"
             },
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
-              "version": "[131.0.6778.26400, )"
+              "version": "[133.0.6943.9800, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "Xunit": {
+              "target": "Package",
+              "version": "[2.9.3, )"
             },
             "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.4, )"
             }
           },
           "imports": [
@@ -110,7 +168,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
