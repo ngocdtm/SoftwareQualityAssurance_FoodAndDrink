@@ -2,13 +2,9 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
-using Newtonsoft.Json;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using OfficeOpenXml;
-using Xunit.Sdk;
-using System.Web.WebPages;
-using System.Timers;
 using static SoftwareQualityAssurance_FoodAndDrink.LoginTest;
 
 namespace SoftwareQualityAssurance_FoodAndDrink
